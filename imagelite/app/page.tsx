@@ -1,10 +1,16 @@
 import Image from "next/image";
+import { PrimeiroComponente } from "./componentes/PrimeiroComponente";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-       
+    <div>
+      <main>
+        <h1>BINARIO GORDON</h1>
+        <PrimeiroComponente
+          mensagem="clica direit0 ."
+          mensagemBotao="Você clicou no meu butão!"
+        />
+
       </main>
     </div>
   );
