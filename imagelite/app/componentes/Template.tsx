@@ -2,6 +2,8 @@ interface TemplateProps {
   children: React.ReactNode
 }
 
+export { ImageCard } from './ImageCardProps';
+
 export const Template: React.FC<TemplateProps> = (props: TemplateProps) => {
   return (
     <>
