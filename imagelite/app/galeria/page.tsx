@@ -2,41 +2,55 @@
 
 //import { Template } from '../components/Template';
 //import { ImageCard } from '../components/Image';
-import { Template, ImageCard,  } from '@/componentes';
-import { ImageService, useImageService } from '@/resource/service';
-import { Image } from '../resource/service'; 
+import { Template, ImageCard } from '@/componentes';
+import { userImage } from '@/resource/service';
+import { image as Image } from '@/resource/image';
 import { useState } from 'react';
 
 
 
 
 export default function Galeria() {
-  
-  const useService = useImageService()
-  const[images, setImages] = useState<ImageService[]>([])
+
+  const imageService = userImage()
+  const [images, setImages] = useState<Image[]>([])
 
   async function searchImages() {
-    const result = await useService.buscar();
+    const result = await imageService.buscar();
     setImages(result);
     console.table(result)
   }
 
-  
+
 
   return (
-   
-      <Template>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={searchImages}>
-          Mudar Imagem
-        </button>
-          <section className="grid grid-cols-3 gap-4  p-4">
-            
-            <ImageCard  imageName='{images[0]?.name}'/>
-          </section>
-          
-       
+
+    <Template>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={searchImages}>
+        Mudar Imagem
+      </button>
+      <section className="grid grid-cols-3 gap-4  p-4">
+
+        <ImageCard imageName={images[0]?.name} />
+      </section>
+
+
+<section className="flex flex-col items-center justify-center my-5">
+            <div className="flex space-x-4">
+              <input type="text" 
+              // 
+              className="border px-4 py-2 rounded-lg text-gray-900" placeholder="Buscar imagens..." />
+              <select className="border px-4 py-2 rounded-lg text-gray-900">
+                <option value="">All formats</option>
+              </select>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={searchImages}>Search </button>
+              <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Add New </button>
+            </div>
+        </section>
+
+
         
-      </Template>
-   
+    </Template>
+
   )
 }
