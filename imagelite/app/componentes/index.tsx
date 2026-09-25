@@ -1,2 +1,2 @@
 export * from './Template';
-export * from './ImageCardProps';
+export * from './ImageCard';
