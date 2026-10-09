@@ -1,29 +1,39 @@
 interface TemplateProps {
     children: React.ReactNode
 }
-export const Template: React.FC<TemplateProps> = ({children}: TemplateProps) => {
+
+export const Template: React.FC<TemplateProps> = ({ children }: TemplateProps) => {
     return (
-        <>
-            <Header/>
+        <div className="min-h-screen bg-slate-950 text-slate-100">
+            <Header />
+            <main className="mx-auto max-w-7xl px-4 pb-16 pt-6">
                 {children}
-            <Footer/>
-        </>
+            </main>
+            <Footer />
+        </div>
     )
 }
+
 const Header: React.FC = () => {
-    return(
-        <header className="bg-black-950 text-white py-3" >
-            <div className="container mx-auto flex justify-between items-center px-4" >
-                <h1 className="text-3xl font-bol">ImageLite</h1>
+    return (
+        <header className="border-b border-slate-800 bg-slate-950/90 text-white backdrop-blur-md">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+                <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 text-lg font-bold shadow-lg shadow-blue-500/30">
+                        I
+                    </div>
+                    <h1 className="text-2xl font-bold tracking-tight">ImageLite</h1>
+                </div>
             </div>
         </header>
     )
 }
+
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-black-950 text-white py-4 mt-8" >
-            <div className="container mx-auto text-center" >
-                Desenvolvido por Andrews, Elia.
+        <footer className="border-t border-slate-800 bg-slate-950 text-slate-400">
+            <div className="mx-auto max-w-7xl px-4 py-4 text-center text-sm">
+                Desenvolvido por Lucão.
             </div>
         </footer>
     )
